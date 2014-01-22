@@ -30,6 +30,12 @@ namespace WeChatDemo
             Console.WriteLine("时间：" + wcd.TimeStamp2DateTime(user.Subscribe_time));
             Console.WriteLine("头像地址：" + user.HeadImgUrl);
 
+            Console.WriteLine("\n第三步：获取微信声音地址");
+            string mediaId = "puMLEUsFl9aZr_zI-dcdJJsUGyZGS8G1LxpFXnCQOBA7bnwvDcAy2dDkSG-WxE6D";
+
+            string voiceAddress = wcd.GetVoice(token, mediaId);
+            Console.WriteLine("声音地址：" + voiceAddress);
+
 
             Console.Read();
         }

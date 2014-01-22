@@ -27,7 +27,7 @@ namespace WeChatDemo
 
         public WeChatDemo()
         {
-            
+
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace WeChatDemo
         /// </summary>
         /// <returns></returns>
         public WeChatTokenEntity GetWechatToken()
-        {   
+        {
             //请求的url地址
             string tokenUrl = string.Format(wechatUrl, appId, appSecret);
             WeChatTokenEntity myToken;
@@ -100,6 +100,23 @@ namespace WeChatDemo
 
             return wue;
         }
+
+        public string GetVoice(string accessToken, string mediaId)
+        {
+            string voiceAddress = string.Empty;
+            string voiceUrl = "http://file.api.weixin.qq.com/cgi-bin/media/get?access_token={0}&media_id={1}";
+            voiceUrl = string.Format(voiceUrl, accessToken, mediaId);
+
+            WebClient wc = new WebClient();
+            byte[] pageData = wc.DownloadData(voiceUrl);
+            string jsonStr = Encoding.UTF8.GetString(pageData);
+            
+            //TODO:获取声音
+            voiceAddress = jsonStr;
+
+            return voiceAddress;
+        }
+
 
         /// <summary>
         /// 时间戳转为当前时间
